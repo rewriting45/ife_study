@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>请输入您的身高:</label><input type="text" id="height">
+    <br>
+    <label>请输入您的体重:</label><input type="text" id="weight">
+    <br>
+    <button id="test">开始测量您的体型</button>
+    <p id="result"></p>
+    <script>
+        // BMI = 体重/身高的平方
+        /*
+            如果 BMI 值低于18.5 ,体重过轻，就提示您是偏瘦体型，可以适当增肥咯
+            如果 BMI 值在18.5-25之间，属于正常体型，就提示您是标准体型，保持的不错哟
+            如果 BMI 值在25-28之间，就属于有点重，就提示您是微胖体型，可以多吃粗粮，让饮食结构更加健康吧！
+            如果 BMI 值在28-32之间，就属于重了，就提示您是肥胖体型，管住嘴迈开腿开始减肥吧！
+            如果 BMI 值大于32，就属于严重超重了，就提示您是肥胖体型，管住嘴迈开腿开始减肥吧！
+            如果实际体重小于标准体重，并且差值大于10kg，就提示您是过重体型，已经影响健康了，需要重视自己的饮食管理了
+        */
+       // 编码1
+        function calcBMIOne(weight, height) {
+            let BMI = weight / height / height;
+            let result = "您是肥胖体型，管住嘴迈开腿开始减肥吧！";
+            if (BMI < 28 && BMI >= 25) {
+                result = "您是微胖体型，可以多吃粗粮，让饮食结构更加健康吧！";
+            }else if (BMI < 25 && BMI >= 18.5) {
+                result = "您是标准体型，保持的不错哟";
+            }else if (BMI < 18.5) {
+                result = "您是偏瘦体型，可以适当增肥咯";
+            }
+            console.log(BMI);
+            return result;
+        }
+
+        // 编码2
+        function calcBMITwo(weight, height) {
+            let BMI = weight / height / height;
+            let result = "您是肥胖体型，管住嘴迈开腿开始减肥吧！";
+            switch (BMI) {
+                case BMI < 18.5: 
+                    result = "您是偏瘦体型，可以适当增肥咯";
+                    break;
+                case BMI < 25 && BMI >= 18.5: 
+                    result = "您是标准体型，保持的不错哟";
+                    break;
+                case BMI < 28 && BMI >= 25: 
+                    result = "您是微胖体型，可以多吃粗粮，让饮食结构更加健康吧！";
+                    break;
+            }
+            console.log(BMI);
+            return result;
+        }
+        
+        let test = document.getElementById("test");
+        test.addEventListener("click", () => {
+            let height = Number(document.getElementById("height").value);
+            let weight = Number(document.getElementById("weight").value);
+            document.getElementById("result").innerHTML = calcBMITwo(weight, height);
+        })
+       
+
+    </script>
+</body>
+</html>

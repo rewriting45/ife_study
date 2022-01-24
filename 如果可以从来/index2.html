@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编码2</title>
+</head>
+
+<body>
+    <label>请输需要判断的水仙花数(三位数):</label><input type="text" id="narcissus-number">
+    <br>
+    <input type="radio" name="narcissus-type" value="1">水仙花数
+    <input type="radio" name="narcissus-type" value="2">四叶玫瑰数
+    <input type="radio" name="narcissus-type" value="3">五角星数
+    <input type="radio" name="narcissus-type" value="4">六合数
+    <input type="radio" name="narcissus-type" value="5">北斗七星数
+    <input type="radio" name="narcissus-type" value="6">八仙数
+    <br>
+    <button id="start">开始判断</button>
+    <script>
+        function cube(x) {
+            return x * x * x;
+        }
+
+        function four(x){
+            return x * x * x * x;
+        }
+
+        function five(x){
+            return x * x * x * x * x;
+        }
+
+        function six(x){
+            return x * x * x * x * x * x;
+        }
+
+        function seven(x){
+            return x * x * x * x * x * x * x;
+        }
+
+        function eight(x){
+            return x * x * x * x * x * x * x * x;
+        }
+
+        function check_validate1(value){      
+            let reg = /\D/g; // 定义正则表达式
+            if( value.constructor === String ){  // 判断传入的是否是字符串   
+                var re = value.match( reg );   // 规则校验
+                return true;    
+            }    
+            return false;    
+        }
+
+        function check_narcissus_number(narcissus_number, type){
+            let narcissus_number_arr = narcissus_number.split("").map(item => {
+                switch (type) {
+                    case "1":
+                        return cube(Number(item));
+                    case "2":
+                        return four(Number(item));
+                    case "3":
+                        return five(Number(item));
+                    case "4":
+                        return six(Number(item));
+                    case "5":
+                        return seven(Number(item));
+                    case "6":
+                        return eight(Number(item));
+                }
+            }).reduce((a, b) => a + b);
+            if (narcissus_number == narcissus_number_arr) {
+                alert(narcissus_number + "是水仙花数");
+            }else {
+                alert(narcissus_number + "不是水仙花数");
+            }
+            
+        }
+        document.getElementById("start").addEventListener("click", e => {
+            let narcissus_number = document.getElementById("narcissus-number").value;
+            let radio_arr = document.getElementsByName("narcissus-type");
+            let radio_value = 1;
+            radio_arr.forEach(item => {
+                if (item.checked) {
+                    radio_value = item.value;
+                }
+            })
+            if (check_validate1(narcissus_number)) {
+                check_narcissus_number(narcissus_number, radio_value);
+            }else {
+                alert("不要输入非数字内容！");
+            }
+        })
+    </script>
+</body>
+
+</html>
