@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            3 的小游戏，练习使用循环和条件语句，实现如下需求：
+
+            从 1 到 100 ，以此在 console 输出各数字，但是，当数字为3的倍数或者含有3的时候，输出“PA”
+            比如：1,2,PA,4,5,PA,……,11,PA,PA,14,PA……
+        */
+        for(let i = 0 ; i <= 100 ; i ++) {
+            if (i % 3 == 0 || i % 10 == 3) {
+                console.log("PA");
+            } else {
+                console.log(i);
+            }
+        }
+    </script>
+</body>
+</html>
