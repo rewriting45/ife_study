@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label>偏移:</label><input type="text" name="offset" size=5 value=3><br>
+        <label>明文:<label></label><input type="text" name="plain" size=50 value="This is a test."><br>
+        <label>密文:</label><input type="text" name="enc" size=50 id="enc"><br>
+        <input type="button" value="加密" id="encrypt">&nbsp;
+        <input type="button" value="解密" id="decrypt">
+    </div>
+    
+   <script>
+        /**
+     * @description 字符串加密
+     * @param {number} offset偏移量
+     * @param {string} str 需要加密的字符串
+     * @return {string} 返回加密字符串
+     */
+    function encrypt(offset,str){
+        //这里实现加密算法
+        return str.split("").map(item => String.fromCharCode(item.charCodeAt() + offset)).join("");
+    }
+    
+    /**
+     * @description 字符串解密
+     * @param {number} offset 偏移量
+     * @param {string} str
+     * @return {string} 返回加密字符串
+     */
+    function decrypt(offset,str){
+        //这里实现解密算法
+        return str.split("").map(item => String.fromCharCode(item.charCodeAt() - offset)).join("");
+    }
+
+    document.getElementById("encrypt").addEventListener("click", e => {
+        document.getElementsByName("enc")[0].value = encrypt(Number(document.getElementsByName("offset")[0].value), document.getElementsByName("plain")[0].value)
+    })
+
+    document.getElementById("decrypt").addEventListener("click", e => {
+        document.getElementsByName("plain")[0].value = decrypt(Number(document.getElementsByName("offset")[0].value), document.getElementsByName("enc")[0].value)
+    })
+   </script>
+</body>
+</html>

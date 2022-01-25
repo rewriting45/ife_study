@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @description 大写首字母
+ * @param {string} str
+ */
+function capitalize(str) {
+    // your code here
+    return str.split("").map((item, index) => {
+        if (index > 0) {
+            return item.toLocaleLowerCase();
+        }else {
+            return item.toLocaleUpperCase();
+        }
+    }).join("");
+}
+
+// 测试用例
+console.log(capitalize("SArah")); // "Sarah"
+console.log(capitalize("amy")); // "Amy"
+console.log(capitalize("jaCkSon")); // "Jackson"
+
+/**
+ * @param {string} str
+ */
+ function getLastCharacter(str) {
+    //your code here
+    return str.slice(-1);
+}
+
+// 测试用例
+console.log(getLastCharacter("SArah")); // "h"
+console.log(getLastCharacter("amy")); // "y"
+console.log(getLastCharacter("jaCkSon")); // "n"
+
+/**
+ * @param {string} str
+ */
+ function skipFirstCharacter(str,num) {
+    // your code here
+    return str.slice(num);
+}
+
+// 测试用例
+console.log(skipFirstCharacter("Javascript",2)); // "vascript"
+console.log(skipFirstCharacter("Hello",1)); // "ello"
+
+/**
+ * @param {string} firstStr
+ * @param {string} lastStr
+ */
+ function concatString(firstStr, lastStr) {
+   // you code here
+   return `${firstStr} ${lastStr}`;
+}
+
+// 测试用例
+console.log(concatString("Jennie", "Kim")); // "Jennie Kim"
+console.log(concatString("Lisa", "La")); // "La Lisa"
+
+/**
+ * @param {string} name
+ */
+ function sayHi(name) {
+     // you code here
+     return "Hello " + name;
+}
+
+//测试用例
+console.log(sayHi("Amy")); // "Hello Amy"
+
+/*
+实现一个字符串头尾去除空格的函数
+注意需要去除的空格，包括全角、半角空格
+*/
+function diyTrim(str) {
+     // do something
+     let strArr = str.split("");
+     console.log(strArr);
+     let begin = 0;
+     let end = 0;
+     for(let i =  0; i < strArr.length - 1 ; i++) {
+        if (strArr[i] != " " && strArr[i] != "　") {
+            begin = i;
+            break;
+        }
+     }
+
+     for(let i = strArr.length - 1; i > 0 ; i--) {
+        if (strArr[i] != " " && strArr[i] != "　") {
+            end = i;
+            break;
+        }
+     }
+     return str.slice(begin, end + 1);
+}
+
+// 测试用例
+console.log(diyTrim(' a f b    ')); // ->a f b
+console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+console.log(diyTrim('1    ')); // ->1
+console.log(diyTrim('　　f')); // ->f
+console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+console.log(diyTrim(' ')); // ->
+console.log(diyTrim('　')); // ->
+console.log(diyTrim('')); // ->
+
+
+/*
+去掉字符串str中，连续重复的地方
+*/
+function removeRepetition(str) {
+    // do something
+    let strArr = str.split("");
+    let temp = strArr[0];
+    let tempArr = [temp];
+    for(let i = 0 ; i < strArr.length; i ++) {
+        if (temp != strArr[i]) {
+            tempArr.push(strArr[i]);
+            temp = strArr[i];
+        }
+    }
+    return tempArr.join("");
+}
+
+// 测试用例
+console.log(removeRepetition("aaa")); // ->a
+console.log(removeRepetition("abbba")); // ->aba
+console.log(removeRepetition("aabbaabb")); // ->abab
+console.log(removeRepetition("")); // ->
+console.log(removeRepetition("abc")); // ->abc
+console.log(removeRepetition("XXXXXVVXXVBXXXXXCCC")); // ->XVXVBXC
+
+/**
+* @@param {string} str 
+* @return {Boolean} 如果是返回 true，如果不是回文字符串 返回 false
+*/
+function isPalindromicString(str) {
+    // do something
+    let strArr = str.split("");
+    for(let i = 0 ; i < strArr.length ; i ++) {
+        if (strArr[i] != strArr[strArr.length - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// 测试用例
+console.log(isPalindromicString("aaa")); // ->true
+console.log(isPalindromicString("madam")); // ->true
+console.log(isPalindromicString("hello")); // ->false
+console.log(isPalindromicString("maddam")); // ->true
+
+    </script>
+</body>
+</html>
