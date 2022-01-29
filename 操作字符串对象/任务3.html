@@ -38,6 +38,19 @@
         return str.split("").map(item => String.fromCharCode(item.charCodeAt() - offset)).join("");
     }
 
+    /**
+     * @description 64位编码
+     * 
+     *
+    */ 
+    function encryptBase64(str){
+        let strArr = str.split("");
+        let strArrTwo = [];
+        for(let i = 0 ; i < strArr.lenght ; i ++) {
+            
+        }
+    }
+
     document.getElementById("encrypt").addEventListener("click", e => {
         document.getElementsByName("enc")[0].value = encrypt(Number(document.getElementsByName("offset")[0].value), document.getElementsByName("plain")[0].value)
     })

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>请输入文本:</label><input  type="text" id="source" value="你是个猪" disabled/>
+<button onclick="generateTypeEffect()">生成打字效果</button>
+<h2 id="showText"></h2>
+
+<script>
+    function generateTypeEffect () {
+        let source = document.getElementById("source").value;
+        let showText = document.getElementById("showText");
+        let end = 1;
+        let timer = setInterval(() => {
+            if (end > source.length) {
+                // clearInterval(timer);
+                end = 1;
+            }else {
+                showText.innerText = source.slice(0, end);
+                end ++;
+            }
+        }, 750);
+    }
+</script>
+</body>
+</html>
