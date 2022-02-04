@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>请输入num1：</label><input type="text" id="num_one"><br>
+<label>请输入num2：</label><input type="text" id="num_two"><br>
+<button id="clickButton">相加</button><br>
+<label>结果:</label><input id="result" type="text" >
+
+<script>
+        /**
+         * @param {string} num1
+         * @param {string} num2
+         * @return {string} 返回 num1+num2
+         **/
+        function largeNumAdd(num1, num2) {
+            // 在这里实现大数相加函数
+            let num1Arr = num1.split("");
+            let num2Arr = num2.split("");
+            let num3Arr = [];
+            let scale = 0;
+            let difference = Math.abs(num1Arr.length - num2Arr.length);
+            if (num1Arr.length > num2Arr.length) {
+                for(let i = 0 ; i < difference ; i ++) {
+                    num2Arr.unshift("0");
+                }
+            }else {
+                for(let i = 0 ; i < difference ; i ++) {
+                    num1Arr.unshift("0");
+                }
+            }
+            for(let i = num1Arr.length - 1 ; i >= 0 ; i--) {
+                if (parseInt(num1Arr[i]) + parseInt(num2Arr[i]) + scale >= 10) {
+                    console.log(10 % 10);
+                    num3Arr.unshift((parseInt(num1Arr[i]) + parseInt(num2Arr[i])+ scale) % 10 );
+                    scale = 1;
+                }else {
+                    num3Arr.unshift(parseInt(num1Arr[i]) + parseInt(num2Arr[i]) + scale);
+                    scale = 0;
+                }
+            }
+            if (scale != 0) {
+                num3Arr.unshift("1");
+            }
+            return num3Arr.join("");
+        }
+
+        //测试用例  
+        largeNumAdd("11", "123") //->"134"
+        largeNumAdd("235656","746433225") //->""746668881""
+        largeNumAdd("3456786543355","222222234567778") //->"225679021111133"
+
+        document.getElementById("clickButton").addEventListener("click", e => {
+            let num_one = document.getElementById("num_one").value;
+            let num_two = document.getElementById("num_two").value;
+            document.getElementById("result").setAttribute("value",largeNumAdd(num_one, num_two));
+        })
+
+        /*
+            小数转二进制
+            0.3 ->  0.3 * 2 = 0.6  0.6 * 2 = 1.2  超出1的部分再乘2  0.2 * 2 = 0.4  0.4 * 2 = 0.8  0.8 * 2 = 1.6 同理可知0.3的二进制是无穷的，但是计算机的内存有限不可能无限循环下去
+            
+        */
+</script>
+</body>
+</html>
