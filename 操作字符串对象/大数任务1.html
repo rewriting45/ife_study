@@ -9,7 +9,8 @@
 <body>
     <label>请输入num1：</label><input type="text" id="num_one"><br>
 <label>请输入num2：</label><input type="text" id="num_two"><br>
-<button id="clickButton">相加</button><br>
+<button id="addClickButton">相加</button><br>
+<button id="clickButton">相乘</button><br>
 <label>结果:</label><input id="result" type="text" >
 
 <script>
@@ -50,15 +51,31 @@
             return num3Arr.join("");
         }
 
+        /**
+         * @param {string} num1
+         * @param {string} num2
+         * @return {string} 返回 num1*num2
+         **/
+        function largeNumMul(num1, num2) {
+            let num1Arr = num1.split("");
+            let num2Arr = num2.split("");
+        }
+
         //测试用例  
         largeNumAdd("11", "123") //->"134"
         largeNumAdd("235656","746433225") //->""746668881""
         largeNumAdd("3456786543355","222222234567778") //->"225679021111133"
 
-        document.getElementById("clickButton").addEventListener("click", e => {
+        document.getElementById("addClickButton").addEventListener("click", e => {
             let num_one = document.getElementById("num_one").value;
             let num_two = document.getElementById("num_two").value;
             document.getElementById("result").setAttribute("value",largeNumAdd(num_one, num_two));
+        })
+
+        document.getElementById("clickButton").addEventListener("click", e=> {
+            let num_one = document.getElementById("num_one").value;
+            let num_two = document.getElementById("num_two").value;
+            document.getElementById("result").setAttribute("value",largeNumAdd(num_one, num_two)); 
         })
 
         /*

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组过滤器 filter
+        let arr = [1,2,3,4,-1,-2,-3];
+        console.log(arr.filter(item => item > 0));  // [1,2,3,4]
+        console.log(arr.map(item => item * 2)); //[2, 4, 6, 8, -2, -4, -6]
+        /*
+            const newValue = arr.reduce(function(accumulator, currentValue, index, array) {
+            // Do stuff with accumulator and currentValue (index, array, and initialValue are optional)
+            }, initialValue);
+
+            newValue : 返回的新数字、数组、字符串或对象
+            arr : 正在操作的数组
+            accumulator :上一次迭代的返回值
+            currentValue :数组中的当前项
+            index : 当前项目的索引
+            array-reduce():被调用的原始数组
+            initialValue :用作最终输出初始值的数字、数组、字符串或对象
+        */
+        console.log(arr.reduce((accumulator,currentValue)=>accumulator + currentValue));
+    </script>
+</body>
+</html>

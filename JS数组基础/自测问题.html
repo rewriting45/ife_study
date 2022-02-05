@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            如果使用const定义数组，是否还可以改变数组中的内容  可以
+
+            数组内容可以改变，无法改变数组变量指向
+        */
+        const arr = [1,2];
+        arr.push(3);
+        console.log(arr);
+        // arr = [];// 自测问题.html:19 Uncaught TypeError: Assignment to constant variable.
+
+        function logGrades(grades) {
+            grades.forEach(function(grade) {
+                console.log(grade);
+                return 10;
+            });
+            return 20;
+        }
+
+        // 返回 20 , 回调函数不会改变外部函数返回的结果
+        console.log(logGrades([1,2]));
+    </script>
+</body>
+</html>

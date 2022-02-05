@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let scores = ['88','90','100','45','60','98','32','99','80'];
+        /**
+        * @description 计算学生的总分数
+        * @param {array} scores
+        * @return {number} 学生的总分数
+        */
+        function getTotalScore(scores){
+        // your code here
+            return scores.map(item => parseInt(item)).reduce((start, end)=>start + end);
+        }
+
+        /**
+        * @description 获得学生的平均分
+        * @param {array} scores
+        * @return {number} 学生的平均分
+        */
+        function getAvgScore(scores){
+        // your code here
+            return getTotalScore(scores) / scores.length;
+        }
+
+        /**
+        * @description 获得挂科的分数
+        * @param {array} scores
+        * @return {array} 返回没有及格的分数
+        */
+        function getFailScores(scores){
+        // your code here
+            return scores.filter(item => item < 60);
+        }
+
+        /**
+        * @description 获得加五分之后的成绩单，如果加五分之后，分数超过了100，就取100分
+        * @param {array} scores
+        * @return {array} 新的成绩单
+        */
+        function getAddFiveScores(scores){
+        // your code here
+            return scores.map(item => {
+                item = parseInt(item)
+                item += 5;
+                console.log(item);
+                if (item > 100) {
+                    item = 100;
+                }
+                return item;
+            })
+        }
+
+        /**
+        * @description 计算学生奖学金
+        * @param {array} scores
+        * @return { number} 奖学金
+        */
+        function getPrize(scores){
+        // your code here
+            return scores.filter(item => item > 90).length * 100;
+        }
+
+        console.log(getTotalScore(scores));
+        console.log(getAvgScore(scores));
+        console.log(getFailScores(scores));
+        console.log(getAddFiveScores(scores));
+        console.log(getPrize(scores));
+    </script>
+</body>
+</html>
