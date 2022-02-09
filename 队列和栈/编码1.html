@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="queue-input" type="text">
+<p id="queue-cont"></p>    
+<button id="in-btn">入队</button>
+<button id="out-btn">出队</button>
+<button id="font-btn">打印队头元素内容</button>
+<button id="empty-btn">判断队列是否为空</button>
+
+<script>
+// 实现如阅读材料中，队列的相关入队、出队、获取队头、判空的操作
+// 队头对应数组中最后一个元素
+// 入队和出队操作后，需要在 id 为 queue-cont 的 p 标签中更新显示队列中的内容，队头在最右侧，中间用 -> 连接（练习使用数组的join方法）
+
+class Queue {
+    queue = [];
+
+    enqueue(que){
+        this.queue.push(que);
+    }
+
+    dequeue(){
+        return this.queue.pop();
+    }
+
+    getQueueHead(){
+        return this.queue[this.queue.length-1];
+    }
+
+    isEmpty(){
+        console.log(this.queue);
+        console.log(this.queue.length);
+        return this.queue.length <= 0 ? true : false;
+    }
+}
+let que = new Queue();
+let p = document.getElementById("queue-cont");
+document.getElementById("in-btn").addEventListener("click", e => {
+    que.enqueue(document.getElementById("queue-input").value);
+    let temp = JSON.parse(JSON.stringify(que.queue));
+    p.innerText = `队列内容： ${temp.reverse().join("->")}`;
+})
+
+document.getElementById("out-btn").addEventListener("click", e => {
+    que.dequeue(document.getElementById("queue-input").value);
+    let temp = JSON.parse(JSON.stringify(que.queue));
+    p.innerText = `队列内容： ${temp.reverse().join("->")}`;
+})
+
+document.getElementById("font-btn").addEventListener("click", e => {
+    console.log(que.getQueueHead());
+    p.innerText = `队列头部元素： ${que.getQueueHead()}`;
+})
+
+document.getElementById("empty-btn").addEventListener("click", e => {
+    p.innerText = que.isEmpty();
+})
+</script>
+</body>
+</html>
