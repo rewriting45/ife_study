@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编码2</title>
+</head>
+<body>
+    <script>
+        let shoppingList = {
+            hamburger: 12,
+            milk: 5,
+            orange:25,
+            banana:49,
+            ipad:10111,
+        }
+
+        /**
+        * @description 获取购物清单所有的商品
+        * @method getKeys
+        * @param {Object} obj 对象
+        * @return {Array} 返回包含对象所有键名的数组
+        */
+        function getKeys(obj){
+        // your complement
+            let arr = [];
+            for (const key in obj) {
+                arr.push(key);
+            }
+            return arr;
+        }
+
+        /**
+        * @description 获取购物清单所有商品的价格
+        * @method getVals
+        * @param {Object} obj 对象
+        * @return {Array} 返回包含对象所有键值的数组
+        */
+        function getVals(obj){
+        // your complement
+            let arr = [];
+            for (const key in obj) {
+                arr.push(obj[key]);
+            }
+            return arr;
+        }
+
+        /**
+        * @description 计算购物清单总价
+        * @method sumshoppingList
+        * @param {Object} obj 对象
+        * @return {Number} 返回购物清单的总价
+        */
+        function sumshoppingList(obj){
+        // your complement
+            let sum = 0;
+            for (const key in obj) {
+                sum += Number(obj[key]);
+            }
+            return sum;
+        }
+
+        /**
+        * @description 给购物清单排序
+        * @method sumshoppingList
+        * @param {Object} obj 对象
+        * @param {Boolean} ascendingOrder 如果值为true，就从小到大排序，值为false，就从大到小排序
+        * @return {Object} 返按从大到小或者从小到大规律排序的购物清单列表
+        */
+        function sumshoppingList(obj,ascendingOrder){
+            let tempArr = objectToObjectArray(obj);
+            // your complement
+            if (ascendingOrder) {
+                for(let i = 0 ; i < tempArr.length ; i ++) {
+                    for(let j = 0 ; j < tempArr.length - 1 - i; j ++) {
+                        if (tempArr[j].value > tempArr[j + 1].value) {
+                            let temp = tempArr[j];
+                            tempArr[j] = tempArr[j + 1];
+                            tempArr[j + 1] = temp;
+                        }
+                    }
+                }
+            }else {
+                for(let i = 0 ; i < tempArr.length ; i ++) {
+                    for(let j = 0 ; j < tempArr.length - 1 - i; j ++) {
+                        if (tempArr[j].value < tempArr[j + 1].value) {
+                            let temp = tempArr[j];
+                            tempArr[j] = tempArr[j + 1];
+                            tempArr[j + 1] = temp;
+                        }
+                    }
+                }
+            }
+            console.log(tempArr);
+            return objectArrayToObject(tempArr);
+        }
+
+        /**
+        * @description 把对象转换为数组
+        * @method objectToObjectArray
+        * @param {Object} obj 对象
+        * @return {Object} 返按从大到小或者从小到大规律排序的购物清单列表
+        */
+        function objectToObjectArray(object){
+            let arr = [];
+            for (const key in object) {
+                arr.push({'member': key, 'value': object[key]})
+            }
+            return arr;
+        }
+
+        /**
+        * @description 把数组转换为对象
+        * @method objectArrayToObject
+        * @param {Array} arr 数组
+        * @return {Object} 返按从大到小或者从小到大规律排序的购物清单列表
+        */
+        function objectArrayToObject(arr){
+            let obj = {};
+            for(let i = 0 ; i < arr.length ; i++) {
+                obj[arr[i].member] = arr[i].value;
+            }
+            return obj;
+        }
+
+        console.log(sumshoppingList(shoppingList, true));
+    </script>
+</body>
+</html>

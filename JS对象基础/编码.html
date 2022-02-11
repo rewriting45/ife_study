@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let bankAcount = {
+            "name": "xiguajiang",
+            "balance": 0,
+            "rank": 9999,
+            "interestRatePercent": 0.1,
+            "deposit": function(amount){
+                this.balance += amount;
+            },
+            "withdraw": function(amount) {
+                this.balance -= amount;
+            },
+            "printAccountInfo": function(){
+                console.log(`您的存款总值：${this.balance},您的世界排名：${this.rank},您的银行利率：${this.interestRatePercent}`);
+            }
+        }
+
+        function checkVip(obj){
+            for (const key in obj) {
+                return key == "vip" ? true : false;
+            }
+        }
+
+        function traversalAllMember(obj){
+            for (const key in obj) {
+                console.log(obj[key]);
+            }
+        }
+
+        function isEmpty(obj) {
+            let i = 0;
+            for (const key in obj) {
+                i++;
+            }
+            return i == 0 ? true : false;
+        }
+
+        console.log(checkVip(bankAcount));
+        traversalAllMember(bankAcount);
+        console.log(isEmpty(bankAcount));
+    </script>
+</body>
+</html>
